@@ -1,0 +1,14 @@
+{
+  "name": "itcs333/project-tests",
+  "description": "Autograder for the ITCS333 group project. Do not modify.",
+  "type": "project",
+  "require-dev": {
+    "phpunit/phpunit": "^11.5"
+  },
+  "autoload-dev": {
+    "classmap": ["ProjectTestCase.php"]
+  },
+  "config": {
+    "process-timeout": 0
+  }
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="bootstrap.php"
+         colors="false">
+  <testsuites>
+    <testsuite name="m1_auth"><file>modules/M1AuthTest.php</file></testsuite>
+    <testsuite name="m2_catalog"><file>modules/M2CatalogTest.php</file></testsuite>
+    <testsuite name="m3_cart"><file>modules/M3CartTest.php</file></testsuite>
+    <testsuite name="m4_orders"><file>modules/M4OrdersTest.php</file></testsuite>
+    <testsuite name="m5_admin"><file>modules/M5AdminTest.php</file></testsuite>
+    <testsuite name="integration"><file>integration/IntegrationTest.php</file></testsuite>
+    <testsuite name="degradation"><file>degradation/DegradationTest.php</file></testsuite>
+  </testsuites>
+</phpunit>

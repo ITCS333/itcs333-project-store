@@ -1,0 +1,57 @@
+name: project-autograde
+on: [push, pull_request]
+permissions:
+  contents: read
+
+jobs:
+  module:
+    strategy:
+      fail-fast: false
+      matrix:
+        m: [m1_auth, m2_catalog, m3_cart, m4_orders, m5_admin]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: pdo, pdo_sqlite, mbstring
+      - name: Install test dependencies
+        run: composer install --working-dir=tests --no-interaction
+      - name: Run ${{ matrix.m }} contract suite (others = stubs)
+        run: bash run_tests.sh --module ${{ matrix.m }}
+        env:
+          DB_DRIVER: sqlite
+          PROJ_PORT_BASE: 8700
+
+  integration:
+    needs: module
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: pdo, pdo_sqlite, mbstring
+      - name: Install test dependencies
+        run: composer install --working-dir=tests --no-interaction
+      - name: Run integration suite (all real modules)
+        run: bash run_tests.sh --integration
+        env:
+          DB_DRIVER: sqlite
+          PROJ_PORT_BASE: 8700
+      - name: Run degradation suite
+        run: bash run_tests.sh --degradation
+        env:
+          DB_DRIVER: sqlite
+          PROJ_PORT_BASE: 8700
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+      - name: Portable-SQL + syntax lint
+        run: bash run_tests.sh --lint

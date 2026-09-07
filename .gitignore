@@ -1,0 +1,8 @@
+tests/vendor/
+vendor/
+.DS_Store
+*.log
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+tests/.active_modules
