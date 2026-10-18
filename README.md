@@ -47,10 +47,9 @@ composer install --working-dir=tests   # first time only
 ./run_tests.sh --all                   # everything (modules + integration + degradation + lint)
 ```
 
-## Grading (20% of course) — 70% individual / 30% shared
-- **Individual (70):** your module's contract tests (40) + security checklist (15) + oral defense (15).
-- **Shared (30):** integration suite (10) + degradation behavior (5) + team demo (5) + docs/`TEAM.md` (5) + style/commit hygiene (5).
-- One **team fork** is submitted once in Blackboard. The instructor's grader overlays pristine tests + stubs and runs the 5-module matrix + integration. A dropped member's share of the **shared 30%** redistributes to the remaining members.
+## Grading (20% of course)
+- **Individual (70):** your module's contract tests (70) + oral defence (30).
+- One **team fork** is submitted once in Blackboard.
 
 ## Milestones
 | Week | Deliverable |
