@@ -13,13 +13,13 @@ A small online store built by a **team of 3–5 students** in **vanilla JS + van
 | **m4_orders** | checkout, order history/detail, `orders`, `order_items` | `contracts/orders.md` |
 | **m5_admin** | product CRUD, sales report, `admin_log` | `contracts/admin.md` |
 
-**Team-size rules:** 5 members → one module each; 4 members → one takes **m3+m4**; 3 members → m3+m4 and **m1+m5**.
+**Team-size rules:** 5 members → one module each; 4 members → one module each (one optional); 3 members → one module each (two optional).
 
 ## How modules stay isolated
 - Each module lives in `modules/<mX>/handler.php` (+ its pages in `public/<area>/`).
 - Modules talk **only** through the JSON contracts in `contracts/` — never by including each other's code.
 - The frontend uses `apiFetch()` (see `public/app.js`), which shows an **inline banner** when a dependency returns 503/`MODULE_UNAVAILABLE` instead of crashing.
-- `contracts/` are **frozen at Milestone 1 (Week 6)** and cannot change without instructor approval.
+- `contracts/` are and cannot change without instructor approval.
 
 ## Database — portable SQL (SQLite / MySQL / PgSQL)
 - The grader and CI use **SQLite**. You may develop locally against **MySQL or PgSQL**.
